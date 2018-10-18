@@ -1,0 +1,33 @@
+.btnmoj{
+ background-color: $color-primary-light;
+ color:$color-back;
+ font-size: 1.3rem;
+ border: none;
+ width: 80%;
+ padding: 5px;
+ margin-left: 10px;
+
+ &-slova{
+    background-color: $color-primary-light;
+    color:$color-back;
+    font-size: 1.3rem;
+    border: 1px solid $color-primary-dark;
+    width: 8%;
+    padding: 5px;
+ }
+
+ &-slova:hover {
+    background-color: $color-primary-verylight;
+}
+
+&-slova-used {
+    background-color: $color-primary-verylight;
+    color:$color-primary-dark;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border: 1px solid $color-primary-dark;
+    width: 8%;
+    padding: 5px;  
+}
+
+}

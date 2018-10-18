@@ -1,0 +1,200 @@
+.zag-rec-container{
+    height: 100px;
+    text-align: center;
+}
+
+.crtice{
+    display: inline-block;
+    animation-name: pojavljivanje;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+    width: 10%;
+}
+
+.letters{
+    color: $color-back;
+    font-size: 1.3rem;
+  
+
+&-zagonetka{
+    color: $color-back;
+    font-size: 4rem;
+    letter-spacing: 1rem;
+}
+
+}
+
+.message {
+    color: $color-back;
+    font-size: 2rem;
+    text-align: center;
+    height: 35px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border: 1px solid wheat;
+
+    &-win{
+        color: $color-back;
+        font-size: 2rem;
+        text-align: center;
+        background-color: $color-win;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+
+    &-loss{
+        color: $color-back;
+          font-size: 2rem;
+          text-align: center;  
+          background-color: $color-loss;
+          margin-bottom: 5%;
+          margin-top: 5%;
+    }
+}
+
+.wraper-ceo{
+ height:60%; 
+ width:60%;   
+ margin: auto;
+
+}
+
+.wraper{
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative; /* If you want text inside of it */  
+    border: 1px solid $color-back;  
+    
+}
+.vesalo {
+
+    &-container {
+        position: relative;
+        border: 1px solid $color-back;
+        height: 50vh;
+        
+   }
+
+    &-glava{
+        position: absolute;
+        left: 45%;
+        top: 2%;
+        background-color: $color-primary;
+        width: 10%;
+        height:  10%;
+        border-radius: 100%;
+       border: 3px solid $color-back;
+       z-index: 10;
+        animation-name: pojavljivanje;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    }   
+    &-torzo{ 
+        position: absolute;
+        left: 50%;
+        top: 12%;
+        background-color: $color-back;
+        width: 1%;
+        height: 40%;
+        border-radius: 20%;
+        color: $color-primary;
+        animation-name: pojavljivanje;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+     
+    } 
+    &-Lruka{
+        position: absolute;
+        left: 36%;
+        top: 12%;
+        background-color: $color-back;
+        width: 1%;
+        height: 30%;
+        border-radius: 20%;
+        color: $color-primary;
+        transform: rotateZ(60deg);
+        transform-origin: 0%;
+        animation-name: pojavljivanjeL;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+       
+   
+    } 
+    &-Druka{
+        position: absolute;
+        left: 64%;
+        top: 12%;
+        background-color: $color-back;
+        width: 1%;
+        height: 30%;
+        border-radius: 20%;
+        color: $color-primary;
+        transform: rotateZ(-60deg);
+        transform-origin: 0%;
+        animation-name: pojavljivanjeD;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+       
+       
+    } 
+    &-Lnoga{
+        position: absolute;
+        left: 36%;
+        top: 45%;
+        background-color: $color-back;
+        width: 1%;
+        height: 30%;
+        border-radius: 20%;
+        color: $color-primary;
+        animation-name: pojavljivanjeL;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+        transform: rotateZ(40deg);
+        transform-origin: 0%;
+        
+    } 
+    &-Dnoga{
+        position: absolute;
+        left: 64%;
+        top: 46%;
+        background-color: $color-back;
+        width: 1%;
+        height: 30%;
+        border-radius: 20%;
+        color: $color-primary;
+        animation-name: pojavljivanjeD;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+        transform: rotateZ(-40deg);
+        transform-origin: 0%;
+    
+
+    } 
+    
+}
+@keyframes pojavljivanjeL {
+    0%{
+        transform: scale(0) rotateZ(0);
+    }
+    100%{
+        transform: scale(1) rotateZ(60deg);
+    }
+        
+}
+@keyframes pojavljivanjeD {
+    0%{
+        transform: scale(0) rotateZ(0);
+    }
+    100%{
+        transform: scale(1) rotateZ(-60deg);
+    }
+        
+}
+@keyframes pojavljivanje {
+    0%{
+        transform: scale(0) ;
+    }
+    100%{
+        transform: scale(1) ;
+    }
+        
+}

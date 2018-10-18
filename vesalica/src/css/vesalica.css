@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: #420c34; }
+
+/* 
+////////////////PRE SET/////////////////////////// */
+.btnmoj {
+  background-color: #720D5D;
+  color: #f2f2f2;
+  font-size: 1.3rem;
+  border: none;
+  width: 80%;
+  padding: 5px;
+  margin-left: 10px; }
+  .btnmoj-slova {
+    background-color: #720D5D;
+    color: #f2f2f2;
+    font-size: 1.3rem;
+    border: 1px solid #420c34;
+    width: 8%;
+    padding: 5px; }
+  .btnmoj-slova:hover {
+    background-color: #a5218b; }
+  .btnmoj-slova-used {
+    background-color: #a5218b;
+    color: #420c34;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border: 1px solid #420c34;
+    width: 8%;
+    padding: 5px; }
+
+.zag-rec-container {
+  height: 100px;
+  text-align: center; }
+
+.crtice {
+  display: inline-block;
+  animation-name: pojavljivanje;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+  width: 10%; }
+
+.letters {
+  color: #f2f2f2;
+  font-size: 1.3rem; }
+  .letters-zagonetka {
+    color: #f2f2f2;
+    font-size: 4rem;
+    letter-spacing: 1rem; }
+
+.message {
+  color: #f2f2f2;
+  font-size: 2rem;
+  text-align: center;
+  height: 35px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  border: 1px solid wheat; }
+  .message-win {
+    color: #f2f2f2;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #239623;
+    margin-bottom: 5%;
+    margin-top: 5%; }
+  .message-loss {
+    color: #f2f2f2;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #E30425;
+    margin-bottom: 5%;
+    margin-top: 5%; }
+
+.wraper-ceo {
+  height: 60%;
+  width: 60%;
+  margin: auto; }
+
+.wraper {
+  padding-top: 100%;
+  /* 1:1 Aspect Ratio */
+  position: relative;
+  /* If you want text inside of it */
+  border: 1px solid #f2f2f2; }
+
+.vesalo-container {
+  position: relative;
+  border: 1px solid #f2f2f2;
+  height: 50vh; }
+
+.vesalo-glava {
+  position: absolute;
+  left: 45%;
+  top: 2%;
+  background-color: #420c34;
+  width: 10%;
+  height: 10%;
+  border-radius: 100%;
+  border: 3px solid #f2f2f2;
+  z-index: 10;
+  animation-name: pojavljivanje;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; }
+
+.vesalo-torzo {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  background-color: #f2f2f2;
+  width: 1%;
+  height: 40%;
+  border-radius: 20%;
+  color: #420c34;
+  animation-name: pojavljivanje;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; }
+
+.vesalo-Lruka {
+  position: absolute;
+  left: 36%;
+  top: 12%;
+  background-color: #f2f2f2;
+  width: 1%;
+  height: 30%;
+  border-radius: 20%;
+  color: #420c34;
+  transform: rotateZ(60deg);
+  transform-origin: 0%;
+  animation-name: pojavljivanjeL;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; }
+
+.vesalo-Druka {
+  position: absolute;
+  left: 64%;
+  top: 12%;
+  background-color: #f2f2f2;
+  width: 1%;
+  height: 30%;
+  border-radius: 20%;
+  color: #420c34;
+  transform: rotateZ(-60deg);
+  transform-origin: 0%;
+  animation-name: pojavljivanjeD;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; }
+
+.vesalo-Lnoga {
+  position: absolute;
+  left: 36%;
+  top: 45%;
+  background-color: #f2f2f2;
+  width: 1%;
+  height: 30%;
+  border-radius: 20%;
+  color: #420c34;
+  animation-name: pojavljivanjeL;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+  transform: rotateZ(40deg);
+  transform-origin: 0%; }
+
+.vesalo-Dnoga {
+  position: absolute;
+  left: 64%;
+  top: 46%;
+  background-color: #f2f2f2;
+  width: 1%;
+  height: 30%;
+  border-radius: 20%;
+  color: #420c34;
+  animation-name: pojavljivanjeD;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+  transform: rotateZ(-40deg);
+  transform-origin: 0%; }
+
+@keyframes pojavljivanjeL {
+  0% {
+    transform: scale(0) rotateZ(0); }
+  100% {
+    transform: scale(1) rotateZ(60deg); } }
+
+@keyframes pojavljivanjeD {
+  0% {
+    transform: scale(0) rotateZ(0); }
+  100% {
+    transform: scale(1) rotateZ(-60deg); } }
+
+@keyframes pojavljivanje {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }

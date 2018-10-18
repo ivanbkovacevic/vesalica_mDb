@@ -9,6 +9,7 @@ import firebase from './firebase';
 import Vesalo from './Vesalo';
 import LettersToBeGuessed from './LettersToBeGuessed';
 import { Grid, Col, Row,Button } from 'react-bootstrap';
+
 class App extends Component {
 
 

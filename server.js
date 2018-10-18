@@ -23,6 +23,8 @@
  //unutar api folder napraviti items.js 
  //unutar items napraviti router i routes za get post i delete
  //u server delu app package.json ubaciti "client" scriptu i "dev"
+ //pokrenuti oba localhosta sa npm run dev
+ //uraditi npm i bootstrap reactstrap uuid react-transition-group
 
  
  const express=require('express');

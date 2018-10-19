@@ -10,6 +10,9 @@ const ItemSchema= new Schema({
     date:{
         type:Date,
         default:Date.now
+    },
+    hobby:{
+        type:String    
     }
 });
 

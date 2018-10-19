@@ -20,7 +20,8 @@ router.get('/',(req,res)=>{
 
 router.post('/',(req,res)=>{
   const newItem = new Item({
-      name:req.body.name 
+      name:req.body.name ,
+      hobby:req.body.hobby
   });
 
   newItem.save()

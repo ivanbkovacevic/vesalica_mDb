@@ -12,7 +12,6 @@ import { Grid, Col, Row,Button } from 'react-bootstrap';
 
 class App extends Component {
 
-
 state={
   gameStarted:false,
   gradoviSrbije:{
@@ -163,21 +162,25 @@ GuessingLetter=(s,i)=>{ // igrac pogadja rec...
 upisiGradUBazu=(e)=>{
   e.preventDefault() ;
    let imeGrada=this.refs.grad.value;
-   let grad={ime:imeGrada}
+   let hobbyName=this.refs.hobby.value;
+   let payload={
+     name:imeGrada,
+     hobby:hobbyName}
    e.target.reset();
-    axios.post('https://vesalica-caf53.firebaseio.com/gradovi_srbije/.json',grad)
+    axios.post('/api/items',payload)
   .then(response=>console.log(response))
   .catch(error=>console.log(error));
 console.log(imeGrada)
-
 }
 
 uzmiGradIzBaze=()=>{
   let {gradoviFirebase}=this.state;
   gradoviFirebase=gradoviFirebase.slice();
   gradoviFirebase=[];
-  axios.get('https://vesalica-caf53.firebaseio.com/gradovi_srbije/.json')
+ // axios.get('https://vesalica-caf53.firebaseio.com/gradovi_srbije/.json')
+  axios.get('/api/items')
   .then(response=>{
+    console.log(response.data)
     for(let i in response.data){
       gradoviFirebase.push(response.data[i].ime)
     }
@@ -240,6 +243,7 @@ uzmiGradIzBaze=()=>{
 
       <form onSubmit={this.upisiGradUBazu}>
         <input type="text" ref='grad' />
+        <input type="text" ref='hobby' />
         <button type='submit'>upisi grad</button>
       </form>
       <button type='text' onClick={this.uzmiGradIzBaze}>uzmi gradove</button>

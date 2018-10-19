@@ -36,7 +36,11 @@
  // u server.js    dodati sta treba za produiction
  //napraviti scriptu za heroku /--   "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
  //instalirati heroku cli
- //ulogovati se sa heroku login
+ //ulogovati se sa heroku login u server delu
+ //heroku create
+ //pa onda na deploy u heroku sajtu
+ //heroku git:remote -a aqueous-savannah-91546 
+ //git push heroku master
 
  
  const express=require('express');

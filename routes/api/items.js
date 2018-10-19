@@ -20,8 +20,9 @@ router.get('/',(req,res)=>{
 
 router.post('/',(req,res)=>{
   const newItem = new Item({
-      name:req.body.name ,
-      hobby:req.body.hobby
+      city:req.body.city,
+      country:req.body.country,
+      continent:req.body.continent
   });
 
   newItem.save()

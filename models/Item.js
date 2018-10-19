@@ -3,17 +3,20 @@ const Schema=mongoose.Schema;
 
 //Create Schema
 const ItemSchema= new Schema({
-    name:{
+    city:{
         type:String,
         required:true
+    },
+    country:{
+        type:String
+    },
+    continent:{
+        type:String
     },
     date:{
         type:Date,
         default:Date.now
     },
-    hobby:{
-        type:String    
-    }
 });
 
 module.exports = Item = mongoose.model('item',ItemSchema);

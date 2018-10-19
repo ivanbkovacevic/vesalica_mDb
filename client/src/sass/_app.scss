@@ -53,9 +53,15 @@
 }
 
 .wraper-ceo{
- height:60%; 
- width:60%;   
+ height:46%; 
+ width:46%;   
  margin: auto;
+
+ @media only screen 
+  and (max-width: 600px){
+    height:75%; 
+    width:75%;  
+}
 
 }
 
@@ -65,19 +71,56 @@
     border: 1px solid $color-back;  
     
 }
+
+
 .vesalo {
 
     &-container {
         position: relative;
         border: 1px solid $color-back;
         height: 50vh;
-        
    }
+
+   &-verticalPost{
+    position: absolute;
+    left: 10%;
+    bottom: 0%;
+    background-color: $color-back;
+    width: 7%;
+    height:  80%;
+    border-radius: 10%;
+   border: 3px solid $color-back;
+   z-index: 10;
+}  
+
+&-horizontalPost{
+    position: absolute;
+    left: 10%;
+    top: 13%;
+    background-color: $color-back;
+    width: 60%;
+    height: 7%;
+    border-radius: 10%;
+   border: 3px solid $color-back;
+   z-index: 10;
+}
+
+&-rope{
+    position: absolute;
+    left: 49%;
+    top: 15%;
+    background-color: $color-primary;
+    width: 1%;
+    height: 15%;
+    border-radius: 10%;
+   border: 1px solid $color-back;
+   z-index: 10;
+}
 
     &-glava{
         position: absolute;
         left: 45%;
-        top: 2%;
+        top: 25%;
         background-color: $color-primary;
         width: 10%;
         height:  10%;
@@ -91,21 +134,21 @@
     &-torzo{ 
         position: absolute;
         left: 50%;
-        top: 12%;
+        top: 33%;
         background-color: $color-back;
         width: 1%;
-        height: 40%;
+        height: 45%;
         border-radius: 20%;
         color: $color-primary;
         animation-name: pojavljivanje;
         animation-duration: 1.2s;
         animation-fill-mode: forwards;
-     
     } 
+
     &-Lruka{
         position: absolute;
         left: 36%;
-        top: 12%;
+        top: 33%;
         background-color: $color-back;
         width: 1%;
         height: 30%;
@@ -122,7 +165,7 @@
     &-Druka{
         position: absolute;
         left: 64%;
-        top: 12%;
+        top: 33%;
         background-color: $color-back;
         width: 1%;
         height: 30%;
@@ -139,7 +182,7 @@
     &-Lnoga{
         position: absolute;
         left: 36%;
-        top: 45%;
+        top: 70%;
         background-color: $color-back;
         width: 1%;
         height: 30%;
@@ -155,7 +198,7 @@
     &-Dnoga{
         position: absolute;
         left: 64%;
-        top: 46%;
+        top: 70%;
         background-color: $color-back;
         width: 1%;
         height: 30%;
@@ -167,7 +210,6 @@
         transform: rotateZ(-40deg);
         transform-origin: 0%;
     
-
     } 
     
 }

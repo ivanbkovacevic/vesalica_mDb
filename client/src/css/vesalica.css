@@ -88,9 +88,13 @@ body {
     margin-top: 5%; }
 
 .wraper-ceo {
-  height: 60%;
-  width: 60%;
+  height: 46%;
+  width: 46%;
   margin: auto; }
+  @media only screen and (max-width: 600px) {
+    .wraper-ceo {
+      height: 75%;
+      width: 75%; } }
 
 .wraper {
   padding-top: 100%;
@@ -104,10 +108,43 @@ body {
   border: 1px solid #f2f2f2;
   height: 50vh; }
 
+.vesalo-verticalPost {
+  position: absolute;
+  left: 10%;
+  bottom: 0%;
+  background-color: #f2f2f2;
+  width: 7%;
+  height: 80%;
+  border-radius: 10%;
+  border: 3px solid #f2f2f2;
+  z-index: 10; }
+
+.vesalo-horizontalPost {
+  position: absolute;
+  left: 10%;
+  top: 13%;
+  background-color: #f2f2f2;
+  width: 60%;
+  height: 7%;
+  border-radius: 10%;
+  border: 3px solid #f2f2f2;
+  z-index: 10; }
+
+.vesalo-rope {
+  position: absolute;
+  left: 49%;
+  top: 15%;
+  background-color: #420c34;
+  width: 1%;
+  height: 15%;
+  border-radius: 10%;
+  border: 1px solid #f2f2f2;
+  z-index: 10; }
+
 .vesalo-glava {
   position: absolute;
   left: 45%;
-  top: 2%;
+  top: 25%;
   background-color: #420c34;
   width: 10%;
   height: 10%;
@@ -121,10 +158,10 @@ body {
 .vesalo-torzo {
   position: absolute;
   left: 50%;
-  top: 12%;
+  top: 33%;
   background-color: #f2f2f2;
   width: 1%;
-  height: 40%;
+  height: 45%;
   border-radius: 20%;
   color: #420c34;
   animation-name: pojavljivanje;
@@ -134,7 +171,7 @@ body {
 .vesalo-Lruka {
   position: absolute;
   left: 36%;
-  top: 12%;
+  top: 33%;
   background-color: #f2f2f2;
   width: 1%;
   height: 30%;
@@ -149,7 +186,7 @@ body {
 .vesalo-Druka {
   position: absolute;
   left: 64%;
-  top: 12%;
+  top: 33%;
   background-color: #f2f2f2;
   width: 1%;
   height: 30%;
@@ -164,7 +201,7 @@ body {
 .vesalo-Lnoga {
   position: absolute;
   left: 36%;
-  top: 45%;
+  top: 70%;
   background-color: #f2f2f2;
   width: 1%;
   height: 30%;
@@ -179,7 +216,7 @@ body {
 .vesalo-Dnoga {
   position: absolute;
   left: 64%;
-  top: 46%;
+  top: 70%;
   background-color: #f2f2f2;
   width: 1%;
   height: 30%;

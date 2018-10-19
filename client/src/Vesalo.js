@@ -6,7 +6,10 @@ class Vesalo extends Component {
         return (
             <div className='wraper-ceo'>
               <div className='wraper'>
-              <div >
+              <div className='cikica'>
+                <div className='vesalo-rope'>-</div> 
+                <div className='vesalo-verticalPost'>-</div> 
+                <div className='vesalo-horizontalPost'>-</div> 
                {this.props.missed >0 ? <div className='vesalo-glava'>-</div> : null}
                {this.props.missed >1 ? <div className='vesalo-torzo'>-</div>: null}
                {this.props.missed >2 ? <div className='vesalo-Lruka'>-</div>: null}

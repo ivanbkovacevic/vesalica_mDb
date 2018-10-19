@@ -22,14 +22,27 @@
  //napraviti folder routes i unutar njega folder api
  //unutar api folder napraviti items.js 
  //unutar items napraviti router i routes za get post i delete
- //u server delu app package.json ubaciti "client" scriptu i "dev"
+//  "scripts": {
+//     "client-install":"npm install --prefix client",
+//     "start": "node server.js",
+//     "server": "nodemon server.js",
+//     "client": "npm start --prefix client",
+//     "dev": "concurrently \"npm run server\" \"npm run client\""
+//   },
  //pokrenuti oba localhosta sa npm run dev
  //uraditi npm i bootstrap reactstrap uuid react-transition-group
+
+ //za heroku
+ // u server.js    dodati sta treba za produiction
+ //napraviti scriptu za heroku /--   "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+ //instalirati heroku cli
+ //ulogovati se sa heroku login
 
  
  const express=require('express');
  const mongoose=require('mongoose');
  const bodyParser=require('body-parser');
+ const path=require('path');
 
  const items =require('./routes/api/items');
 
@@ -37,6 +50,18 @@
 
  //Bodyparser Middleware
  app.use(bodyParser.json());
+
+ //Serve static assets if in production
+
+ if(process.env.NODE_ENV==='production'){
+     //Set static folder
+     app.use(express.static(client/build));
+     app.get('*',(req,res)=>{
+         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+     });
+
+ }
+
 
  //DB Config
  const db = require('./config/keys').mongoURI;

@@ -27,6 +27,18 @@ body {
   width: 80%;
   padding: 5px;
   margin-left: 10px; }
+  .btnmoj-container {
+    animation-name: buttonsEnter;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
+  .btnmoj-active {
+    background-color: #239623;
+    color: #f2f2f2;
+    font-size: 1.3rem;
+    border: none;
+    width: 80%;
+    padding: 5px;
+    margin-left: 10px; }
   .btnmoj-slova {
     background-color: #720D5D;
     color: #f2f2f2;
@@ -44,6 +56,12 @@ body {
     border: 1px solid #420c34;
     width: 8%;
     padding: 5px; }
+
+@keyframes buttonsEnter {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
 
 .zag-rec-container {
   height: 100px;

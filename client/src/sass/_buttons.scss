@@ -1,5 +1,22 @@
 .btnmoj{
 
+    &-container{
+        animation-name: buttonsEnter;
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+
+    }
+
+    &-active{
+        background-color: $color-win;
+        color:$color-back;
+        font-size: 1.3rem;
+        border: none;
+        width: 80%;
+        padding: 5px; 
+        margin-left: 10px;
+    }
+
  background-color: $color-primary-light;
  color:$color-back;
  font-size: 1.3rem;
@@ -28,7 +45,12 @@
     font-size: 1.3rem;
     border: 1px solid $color-primary-dark;
     width: 8%;
-    padding: 5px;  
+    padding: 5px;
 }
 
 }
+ 
+@keyframes buttonsEnter {
+    0%{transform: scale(0)};
+    100%{transform: scale(1)}
+} 

@@ -13,7 +13,13 @@ class App extends Component {
 
   state = {
     gameStarted: false,
-    serbiaCityTest: [],
+    azbuka:true,
+    isSerbianCity:true,
+   
+    worldCityArr:[],
+    serbianCityArr:[],
+    mysteryCityArr:[],
+
     mysteryWord: '',
     showWord: false,
     mysteryWordLength: 0,
@@ -28,6 +34,15 @@ class App extends Component {
     { id: 20, value: "С", clicked: false }, { id: 21, value: "Т", clicked: false }, { id: 22, value: "У", clicked: false }, { id: 23, value: "Ф", clicked: false },
     { id: 24, value: "Х", clicked: false }, { id: 25, value: "Ц", clicked: false }, { id: 26, value: "Ћ", clicked: false }, { id: 27, value: "Ч", clicked: false },
     { id: 28, value: "Џ", clicked: false }, { id: 29, value: "Ш", clicked: false }],
+
+    abeceda: [{ id: 30, value: "A", clicked: false }, { id: 1, value: "B", clicked: false }, { id: 2, value: "C", clicked: false }, { id: 3, value: "D", clicked: false },
+    { id: 4, value: "E", clicked: false }, { id: 5, value: "F", clicked: false }, { id: 6, value: "G", clicked: false }, { id: 7, value: "H", clicked: false },
+    { id: 8, value: "I", clicked: false }, { id: 9, value: "J", clicked: false }, { id: 10, value: "K", clicked: false }, { id: 11, value: "L", clicked: false },
+    { id: 12, value: "M", clicked: false }, { id: 13, value: "N", clicked: false }, { id: 14, value: "O", clicked: false }, { id: 15, value: "P", clicked: false },
+    { id: 16, value: "Q", clicked: false }, { id: 17, value: "R", clicked: false }, { id: 18, value: "S", clicked: false }, { id: 19, value: "T", clicked: false },
+    { id: 20, value: "U", clicked: false }, { id: 21, value: "V", clicked: false }, { id: 22, value: "W", clicked: false }, { id: 23, value: "X", clicked: false },
+    { id: 24, value: "Y", clicked: false }, { id: 25, value: "Z", clicked: false }, { id: 26, value: "Ć", clicked: false }, { id: 27, value: "Č", clicked: false },
+    { id: 28, value: "Š", clicked: false }, { id: 29, value: "Đ", clicked: false }],
     bingo: 0,
     missed: 0,
     letterG: '',
@@ -35,24 +50,22 @@ class App extends Component {
     message: '',
     btnMsg: 'START',
     status: '',
-    gradoviFirebase: [],
     dataReady: false
-
   }
 
   // initial mysteryWord making with lines
   generateWord = () => {
-    let { mysteryWord, mysteryWordLength, mysteryWordArr, correctLettArr, notMatch, mysteryWordArrChecking, serbiaCity, serbiaCityTest, gameStarted, btnMsg } = this.state;
+    let { mysteryWord, mysteryWordLength, mysteryWordArr,correctLettArr, notMatch, mysteryWordArrChecking, mysteryCityArr,  gameStarted, btnMsg } = this.state;
 
     if (!gameStarted) {
       gameStarted = !gameStarted;
       btnMsg = 'RESETUJ';
-      let gradoviLength = serbiaCityTest.length;
-      console.log(gradoviLength);
-      console.log(serbiaCity);
+      let cityesLength = mysteryCityArr.length;
+      console.log(cityesLength);
+      console.log(mysteryCityArr);
       //geting the index so can  randomly search for a word
-      let mysteryIndex = Math.floor(Math.random() * gradoviLength) + 1;
-      mysteryWord = serbiaCityTest[mysteryIndex];
+      let mysteryIndex = Math.floor(Math.random() * cityesLength) + 1;
+      mysteryWord = mysteryCityArr[mysteryIndex];
       console.log(mysteryWord);
       //we need word length so we can check is it win or loss and to draw lines
       mysteryWordLength = mysteryWord.length;
@@ -86,6 +99,7 @@ class App extends Component {
         mysteryWordLength: 0,
         mysteryWordArr: [],
         mysteryWordArrChecking: [],
+       // mysteryCityArr:[],
         correctLettArr: [],
         bingo: 0,
         missed: 0,
@@ -101,7 +115,7 @@ class App extends Component {
         { id: 16, value: "Њ", clicked: false }, { id: 17, value: "О", clicked: false }, { id: 18, value: "П", clicked: false }, { id: 19, value: "Р", clicked: false },
         { id: 20, value: "С", clicked: false }, { id: 21, value: "Т", clicked: false }, { id: 22, value: "У", clicked: false }, { id: 23, value: "Ф", clicked: false },
         { id: 24, value: "Х", clicked: false }, { id: 25, value: "Ц", clicked: false }, { id: 26, value: "Ћ", clicked: false }, { id: 27, value: "Ч", clicked: false },
-        { id: 28, value: "Џ", clicked: false }, { id: 29, value: "Ш", clicked: false }],
+        { id: 28, value: "Џ", clicked: false }, { id: 29, value: "Ш", clicked: false }]
       });
     }
 
@@ -173,6 +187,7 @@ class App extends Component {
   }
 
   insertCityesInMongo = (e) => {
+    
     e.preventDefault();
     let cityName = this.refs.city.value;
     let countryName = this.refs.country.value;
@@ -191,27 +206,56 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let { gradoviFirebase, serbiaCityTest } = this.state;
-    serbiaCityTest = serbiaCityTest.slice();
+    //getting the initial date from a server
+    let { mysteryCityArr,worldCityArr, serbianCityArr,isSerbianCity } = this.state;
+    mysteryCityArr = mysteryCityArr.slice();
    
     axios.get('/api/items')
       .then(response => {
         console.log(response.data)
         for (let i in response.data) {
-          gradoviFirebase.push(response.data[i].city)
-          serbiaCityTest.push(response.data[i].city)
+         if(response.data[i].country==='србија' ){
+      //selecting data for serbian cityes
+          serbianCityArr.push(response.data[i].city);
+          mysteryCityArr=[...serbianCityArr];
+
+         }else if(response.data[i].country!=='србија' ){
+          worldCityArr.push(response.data[i].city);
+           //selecting data for world cityes
+         }
         }
 
-        this.setState({ gradoviFirebase, serbiaCityTest, dataReady: true });
-        console.log(serbiaCityTest)
+        this.setState({ mysteryCityArr,worldCityArr,serbianCityArr, dataReady: true });
+        console.log(mysteryCityArr)
+        console.log(mysteryCityArr+'mystery')
       })
   }
 
+  isSerbianCityCheck=()=>{
+    //switch button function for changing to serbian  cityes
+    let {isSerbianCity,mysteryCityArr,serbianCityArr}=this.state;
+    isSerbianCity=true;
+    mysteryCityArr=mysteryCityArr.slice();
+    mysteryCityArr=[...serbianCityArr];
+
+   this.setState({isSerbianCity,mysteryCityArr})
+  }
+
+  isWorldCityCheck=()=>{
+     //switch button function for changing to world  cityes
+    let {isSerbianCity,mysteryCityArr,worldCityArr}=this.state;
+    isSerbianCity=false;
+    mysteryCityArr=mysteryCityArr.slice();
+    mysteryCityArr=[...worldCityArr];
+    this.setState({isSerbianCity,mysteryCityArr})
+  }
+  
 
   ////////////////////////////////////////////////////////////////////////////////////////////
   render() {
     let { status, correctLettArr } = this.state;
     let correct = null;
+    let abv = null;
     let abc = null;
     let fire = null;
 
@@ -219,23 +263,33 @@ class App extends Component {
       return <span key={i} className='crtice'>{l}</span>
     })
 
-    abc = (
+    abv = (
       this.state.azbuka.map((slo, i) => {
         return (<LettersToBeGuessed key={i} isUsed={slo.clicked} value={slo.value} clicked={() => this.GuessingLetter(slo.value, i)} />
         )
       })
     )
 
-    if (this.state.dataReady) {
-      fire = this.state.gradoviFirebase.map((gr, i) => {
-        return <p key={i}>{gr}</p>
+    abc = (
+      this.state.abeceda.map((slo, i) => {
+        return (<LettersToBeGuessed key={i} isUsed={slo.clicked} value={slo.value} clicked={() => this.GuessingLetter(slo.value, i)} />
+        )
       })
-    }
+    )
+    let serbianActiveClass=null;
+    let worldActiveClass=null;
+    this.state.isSerbianCity ? serbianActiveClass="btnmoj-active" : serbianActiveClass="btnmoj" ;
+    this.state.isSerbianCity ? worldActiveClass="btnmoj" : worldActiveClass="btnmoj-active" ;
+  
 
     return (
+      
       <Grid >
         <Row>
-          <Col xs={4}><button className="btnmoj" onClick={this.generateWord}>{this.state.btnMsg}</button></Col>
+          <Col xs={6}><button className="btnmoj" onClick={this.generateWord}>{this.state.btnMsg}</button></Col>
+          <Col xs={3}><button className={serbianActiveClass}  onClick={this.isSerbianCityCheck}>Градови Србије</button></Col>
+  
+          <Col xs={3}><button className={worldActiveClass} onClick={this.isWorldCityCheck}>Gradovi Sveta</button></Col>
         </Row>
 
         <Row>
@@ -246,7 +300,8 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12}>
-            {this.state.gameStarted ? <div>{abc}</div> : null}
+            {this.state.gameStarted && this.state.isSerbianCity ? <div className='btnmoj-container'>{abv}</div> : null}
+            {this.state.gameStarted && !this.state.isSerbianCity ?  <div className='btnmoj-container'>{abc}</div> : null}
           </Col>
 
         </Row>
@@ -259,14 +314,14 @@ class App extends Component {
         <Row>
           <Vesalo missed={this.state.missed} />
 
-          {/* <form onSubmit={this.insertCityesInMongo}>
+       <form onSubmit={this.insertCityesInMongo}>
         <input type="text" placeholder="city" ref='city' />
         <input type="text" placeholder="country" ref='country' />
         <input type="text" placeholder="continent" ref='continent' />
         <button type='submit'>upisi grad</button>
       </form>
-      {/* <button type='text' onClick={this.takeCityes}>uzmi gradove</button> 
-     {/*  */ }
+       <button type='text' onClick={this.takeCityes}>uzmi gradove</button> 
+      
 
         </Row>
 
